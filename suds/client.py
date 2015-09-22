@@ -735,6 +735,7 @@ class _SoapClient:
         else:
             soapenv = soapenv.plain()
         soapenv = soapenv.encode("utf-8")
+        self.client.sent = soapenv
         ctx = plugins.message.sending(envelope=soapenv)
         soapenv = ctx.envelope
         if self.options.nosend:
@@ -770,6 +771,7 @@ class _SoapClient:
         @rtype: I{builtin}|I{subclass of} L{Object}|I{bytes}|I{None}
 
         """
+        self.client.response = reply
         if status is None:
             status = httplib.OK
         debug_message = "Reply HTTP status - %d" % (status,)

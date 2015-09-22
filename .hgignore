@@ -19,3 +19,5 @@ syntax: regexp
 
 # Backup files.
 \.bak$
+syntax: glob
+.idea/
